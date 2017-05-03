@@ -47,14 +47,11 @@ app.on('ready', () => {
 
     const bounds = tray.getBounds();
 
-    let x = bounds.x - 200 + (bounds.width / 2);
-    let y = process.platform === 'darwin' ? bounds.y + bounds.height + 10 : bounds.y - 400 - 10;
-
     win = new BrowserWindow({
         width: 400,
         height: 400,
-        x: x,
-        y: y,
+        x: Math.round(bounds.x - 200 + (bounds.width / 2)),
+        y: (process.platform === 'darwin') ? bounds.y + bounds.height + 10 : bounds.y - 400 - 10,
         show: false,
         resizable: false,
         movable: false,
